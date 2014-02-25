@@ -5,6 +5,43 @@
 SortMethods::SortMethods()
 {
 }
+void SortMethods::QuickSorter(int *Array, int left, int right)
+{
+	int i = left;
+	int j = right;
+	int flag = Array[left];
+	while (i<j)
+	{
+		while (i<j&&Array[j]>=flag)
+		{
+			j--;
+
+		}
+
+		if (i < j)
+		{
+			Array[i++] = Array[j];
+		}
+
+
+		while (i < j&&Array[i] <=flag)
+		{
+			i++;
+		}
+
+		if (i < j)
+		{
+			Array[j--] = Array[i];
+		}
+
+
+	}
+	Array[i] = flag;
+	if (left<i)
+		QuickSorter(Array, left, i - 1);
+	if (right>i)
+		QuickSorter(Array, i + 1, right);
+}
 
 void SortMethods::BarelSorter(int *Array ,int length)
 {
