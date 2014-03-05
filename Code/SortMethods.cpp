@@ -1,9 +1,34 @@
 #include "stdafx.h"
 #include "SortMethods.h"
+#include <Math.h>
 
 
 SortMethods::SortMethods()
 {
+}
+void SortMethods::CombSorter(int *Array, int length)
+{
+	int step = floor(length / 1.3);
+	int temp = 0;
+
+	while (step > 1)
+	{
+		int k = step;
+		for (int i = 0; i < length; i++)
+		{
+			if ((i + step)>length-1)
+				break;
+			if (Array[i]>Array[i+step])
+			{
+				temp = Array[i];
+				Array[i] = Array[i + step];
+				Array[i + step] = temp;
+			}
+		}
+
+		step = floor(step / 1.3);
+	}
+
 }
 void SortMethods::QuickSorter(int *Array, int left, int right)
 {
